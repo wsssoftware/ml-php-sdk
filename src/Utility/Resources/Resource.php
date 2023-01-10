@@ -11,7 +11,6 @@ use MercadoLivre\Utility\MercadoLivre;
  */
 abstract class Resource
 {
-
     /**
      * @param  \MercadoLivre\Utility\MercadoLivre  $mercadoLivre
      */
@@ -20,5 +19,4 @@ abstract class Resource
     ) {
         //
     }
-
 }
