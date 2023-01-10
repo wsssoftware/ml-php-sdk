@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravue\Tests;
+namespace MercadoLivre\Tests;
 
 include 'functions.php';
 
