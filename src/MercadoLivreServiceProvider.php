@@ -3,7 +3,7 @@
  * Copyright (c) Alô Cozinha 2022. All right reserved.
  */
 
-namespace MercadoLivre\Providers;
+namespace MercadoLivre;
 
 use Illuminate\Foundation\Application;
 use MercadoLivre\Utility\Factory;
@@ -25,17 +25,18 @@ class MercadoLivreServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('mercado-livre')
-            ->hasConfigFile(['mercadolivre'])
-            ->hasCommands([]);
+            ->hasConfigFile(['mercadolivre']);
     }
 
     /**
      * Register services.
      *
      * @return void
+     * @throws \Spatie\LaravelPackageTools\Exceptions\InvalidPackage
      */
     public function register(): void
     {
+        parent::register();
         $this->app->bind(Factory::class, function (Application $app) {
             return new Factory();
         });
@@ -48,6 +49,7 @@ class MercadoLivreServiceProvider extends PackageServiceProvider
      */
     public function boot(): void
     {
+        parent::boot();
         $this->commands([]);
     }
 }

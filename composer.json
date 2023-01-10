@@ -52,7 +52,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "MercadoLivre\\Providers\\MercadoLivreServiceProvider"
+                "MercadoLivre\\MercadoLivreServiceProvider"
             ]
         }
     },
