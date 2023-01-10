@@ -32,6 +32,7 @@ class MercadoLivreServiceProvider extends PackageServiceProvider
      * Register services.
      *
      * @return void
+     *
      * @throws \Spatie\LaravelPackageTools\Exceptions\InvalidPackage
      */
     public function register(): void
