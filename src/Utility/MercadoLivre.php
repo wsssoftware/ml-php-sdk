@@ -9,14 +9,12 @@ namespace MercadoLivre\Utility;
  */
 class MercadoLivre
 {
-
     /**
      * @param  \MercadoLivre\Utility\MercadoLivreToken  $token
      */
     public function __construct(
         protected MercadoLivreToken $token
-    )
-    {
+    ) {
         //
     }
 }
