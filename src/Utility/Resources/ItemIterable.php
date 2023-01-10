@@ -12,7 +12,6 @@ use MercadoLivre\Utility\MercadoLivre;
  */
 class ItemIterable implements \Iterator
 {
-
     protected string|false|null $scroll = null;
 
     protected array $current = [];
@@ -20,8 +19,7 @@ class ItemIterable implements \Iterator
     public function __construct(
         protected MercadoLivre $mercadoLivre,
         protected array $query = [],
-    )
-    {
+    ) {
     }
 
     public function current(): array
@@ -47,7 +45,7 @@ class ItemIterable implements \Iterator
             'limit' => 100,
             'status' => 'active',
         ];
-        if (!empty($this->scroll)) {
+        if (! empty($this->scroll)) {
             $this->query['scroll_id'] = $this->scroll;
         }
         $response = $this->mercadoLivre->resourceGet("users/$userId/items/search", $this->query);
@@ -55,6 +53,7 @@ class ItemIterable implements \Iterator
         $this->scroll = Arr::get($response, 'scroll_id');
         $this->current = $results;
         usleep(500000);
+
         return count($results) > 0;
     }
 
