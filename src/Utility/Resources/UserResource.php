@@ -2,8 +2,6 @@
 
 namespace MercadoLivre\Utility\Resources;
 
-use MercadoLivre\Utility\MercadoLivre;
-
 /**
  * Class UserResource
  *
