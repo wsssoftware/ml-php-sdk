@@ -9,7 +9,6 @@ namespace MercadoLivre\Utility;
  */
 interface MercadoLivreToken
 {
-
     /**
      * Return the token
      *
