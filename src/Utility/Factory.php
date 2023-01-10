@@ -12,7 +12,6 @@ use InvalidArgumentException;
  */
 class Factory
 {
-
     /**
      * @param  string|null  $state
      * @return string
@@ -28,10 +27,10 @@ class Factory
             'response_type' => 'code',
             'client_id' => $id,
         ];
-        if (!empty($state)) {
+        if (! empty($state)) {
             $payload['state'] = $state;
         }
-        if (!empty($redirect)) {
+        if (! empty($redirect)) {
             if (str_starts_with($redirect, 'https://')) {
                 $payload['redirect_uri'] = $redirect;
             } elseif (str_starts_with($redirect, 'http://')) {
@@ -61,13 +60,12 @@ class Factory
      */
     public function oauth(string $model, string $code): MercadoLivreToken|null
     {
-        if (!class_exists($model)) {
+        if (! class_exists($model)) {
             throw new InvalidArgumentException("Model $model does not exists");
         }
-        if (!is_subclass_of($model, MercadoLivreToken::class)) {
+        if (! is_subclass_of($model, MercadoLivreToken::class)) {
             throw new InvalidArgumentException("Model $model must be a subclass of ".MercadoLivreToken::class);
         }
-
 
         return null;
     }

@@ -46,6 +46,4 @@ interface MercadoLivreToken
      * @return \MercadoLivre\Utility\MercadoLivreToken
      */
     public static function mlCreateToken(array $mlUser, string $token, string $refreshToken, \DateTime $expiresOn): MercadoLivreToken;
-
-
 }
