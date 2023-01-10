@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Facade;
 use MercadoLivre\Utility\MercadoLivreToken;
 
 /**
+ * @method static string authUrl()
  * @method static \MercadoLivre\Utility\MercadoLivreToken from(MercadoLivreToken $token)
+ * @method static \MercadoLivre\Utility\MercadoLivreToken oauth(string $model, string $code)
  *
  * @see \MercadoLivre\Utility\Factory
  */
