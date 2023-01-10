@@ -15,7 +15,7 @@ abstract class Resource
      * @param  \MercadoLivre\Utility\MercadoLivre  $mercadoLivre
      */
     public function __construct(
-        protected MercadoLivre $mercadoLivre
+        public MercadoLivre $mercadoLivre
     ) {
         //
     }

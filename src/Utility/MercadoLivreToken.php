@@ -11,6 +11,21 @@ use Carbon\Carbon;
  */
 interface MercadoLivreToken
 {
+
+    /**
+     * Return the refresh token.
+     *
+     * @return string
+     */
+    public function mlRefreshToken(): string;
+
+    /**
+     * Return the site.
+     *
+     * @return string
+     */
+    public function mlSite(): string;
+
     /**
      * Return the token
      *
@@ -19,11 +34,11 @@ interface MercadoLivreToken
     public function mlToken(): string;
 
     /**
-     * Return the refresh token.
+     * Return the seller id.
      *
-     * @return string
+     * @return int
      */
-    public function mlRefreshToken(): string;
+    public function mlUserId(): int;
 
     /**
      * Return the token expiration date.
