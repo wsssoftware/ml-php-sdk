@@ -54,7 +54,7 @@ class ItemIterable implements \Iterator
         $results = Arr::get($response, 'results', []);
         $this->scroll = Arr::get($response, 'scroll_id');
         $this->current = $results;
-        usleep(500000);
+        sleep(2);
         return count($results) > 0;
     }
 
