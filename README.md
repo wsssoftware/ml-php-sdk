@@ -1,4 +1,4 @@
-# Mercado Livre SDK for PHP
+# Mercado Livre Laravel SDK for PHP
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/wsssoftware/ml-php-sdk.svg?style=flat-square)](https://packagist.org/packages/wsssoftware/ml-php-sdk)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/wsssoftware/ml-php-sdk/run-tests?label=tests)](https://github.com/wsssoftware/ml-php-sdk/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -24,14 +24,14 @@ composer require wsssoftware/ml-php-sdk
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --tag="ml-php-sdk-migrations"
+php artisan vendor:publish --tag="mercado-livre-migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="ml-php-sdk-config"
+php artisan vendor:publish --tag="mercado-livre-config"
 ```
 
 This is the contents of the published config file:
@@ -44,7 +44,7 @@ return [
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="ml-php-sdk-views"
+php artisan vendor:publish --tag="mercado-livre-views"
 ```
 
 

@@ -2,6 +2,8 @@
 
 namespace MercadoLivre\Utility;
 
+use Carbon\Carbon;
+
 /**
  * Interface MercadoLivreToken
  *
@@ -26,26 +28,26 @@ interface MercadoLivreToken
     /**
      * Return the token expiration date.
      *
-     * @return \DateTime
+     * @return \Carbon\Carbon
      */
-    public function mlExpiresOn(): \DateTime;
+    public function mlExpiresOn(): Carbon;
 
     /**
      * @param  string  $token
      * @param  string  $refreshToken
-     * @param  \DateTime  $expiresOn
+     * @param  \Carbon\Carbon  $expiresIn
      * @return void
      */
-    public function mlUpdateToken(string $token, string $refreshToken, \DateTime $expiresOn): void;
+    public function mlUpdateToken(string $token, string $refreshToken, Carbon $expiresIn): void;
 
     /**
-     * @param  array  $mlUser
+     * @param  array  $user
      * @param  string  $token
      * @param  string  $refreshToken
-     * @param  \DateTime  $expiresOn
+     * @param  \Carbon\Carbon  $expiresIn
      * @return \MercadoLivre\Utility\MercadoLivreToken
      */
-    public static function mlCreateToken(array $mlUser, string $token, string $refreshToken, \DateTime $expiresOn): MercadoLivreToken;
+    public static function mlCreateToken(array $user, string $token, string $refreshToken, Carbon $expiresIn): MercadoLivreToken;
 
 
 }

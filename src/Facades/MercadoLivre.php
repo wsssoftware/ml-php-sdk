@@ -10,8 +10,10 @@ use MercadoLivre\Utility\MercadoLivreToken;
 
 /**
  * @method static string authUrl()
- * @method static \MercadoLivre\Utility\MercadoLivreToken from(MercadoLivreToken $token)
+ * @method static \MercadoLivre\Utility\MercadoLivre from(MercadoLivreToken $token)
  * @method static \MercadoLivre\Utility\MercadoLivreToken oauth(string $model, string $code)
+ * @method static \Illuminate\Http\Client\PendingRequest peddingRequest(string $token)
+ * @method static \MercadoLivre\Utility\MercadoLivreToken refresh(MercadoLivreToken $token)
  *
  * @see \MercadoLivre\Utility\Factory
  */
