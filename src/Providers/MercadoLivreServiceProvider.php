@@ -24,10 +24,8 @@ class MercadoLivreServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('laravue-toolkit')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravue-toolkit_table')
+            ->name('mercado-livre')
+            ->hasConfigFile(['mercadolivre'])
             ->hasCommands([]);
     }
 

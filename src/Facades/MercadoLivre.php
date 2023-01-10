@@ -6,13 +6,14 @@
 namespace MercadoLivre\Facades;
 
 use Illuminate\Support\Facades\Facade;
+use MercadoLivre\Utility\MercadoLivreToken;
 
 /**
- * @method static string toList(array $list, array $options = [])
+ * @method static \MercadoLivre\Utility\MercadoLivreToken from(MercadoLivreToken $token)
  *
- * @see \Laravue\Utility\Text
+ * @see \MercadoLivre\Utility\Factory
  */
-class Text extends Facade
+class MercadoLivre extends Facade
 {
     /**
      * {@inheritDoc}

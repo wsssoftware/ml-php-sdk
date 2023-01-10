@@ -1,10 +1,8 @@
 # Mercado Livre SDK for PHP
 
-[![Latest Version on NPM](https://img.shields.io/npm/v/ml-php-sdk/alpha)](https://npmjs.com/package/ml-php-sdk)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/wsssoftware/ml-php-sdk.svg?style=flat-square)](https://packagist.org/packages/wsssoftware/ml-php-sdk)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/wsssoftware/ml-php-sdk/run-tests?label=tests)](https://github.com/wsssoftware/ml-php-sdk/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/wsssoftware/ml-php-sdk/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/wsssoftware/ml-php-sdk/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-![npm](https://img.shields.io/npm/dt/ml-php-sdk?label=npm%20downloads)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/wsssoftware/ml-php-sdk?label=packagist%20downloads)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
