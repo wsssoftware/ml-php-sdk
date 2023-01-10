@@ -13,6 +13,7 @@ use MercadoLivre\Utility\Resources\UserResource;
 class MercadoLivre
 {
     public ItemResource $itemResource;
+
     public UserResource $userResource;
 
     /**

@@ -9,7 +9,6 @@ namespace MercadoLivre\Utility\Resources;
  */
 class ItemResource extends Resource
 {
-
     /**
      * @param  string  $id
      * @return array
