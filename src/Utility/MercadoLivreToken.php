@@ -11,7 +11,6 @@ use Carbon\Carbon;
  */
 interface MercadoLivreToken
 {
-
     /**
      * Return the refresh token.
      *
