@@ -17,7 +17,6 @@ use MercadoLivre\Enums\GrantType;
  */
 class Factory
 {
-
     /**
      * @param  string|null  $state
      * @return string
@@ -34,10 +33,10 @@ class Factory
             'client_id' => $id,
         ];
         $redirect = $this->getRedirect();
-        if (!empty($redirect)) {
+        if (! empty($redirect)) {
             $payload['redirect_uri'] = $redirect;
         }
-        if (!empty($state)) {
+        if (! empty($state)) {
             $payload['state'] = $state;
         }
 
@@ -62,7 +61,7 @@ class Factory
     {
         $redirect = config('mercadolivre.redirect_uri');
         if (empty($redirect)) {
-           return null;
+            return null;
         }
         if (str_starts_with($redirect, 'https://')) {
             return $redirect;
@@ -71,6 +70,7 @@ class Factory
         } elseif (Route::has($redirect)) {
             return route($redirect);
         }
+
         return null;
     }
 
@@ -90,7 +90,7 @@ class Factory
         ];
         if ($type === GrantType::AUTHORIZATION_CODE) {
             $redirect = $this->getRedirect();
-            if (!empty($redirect)) {
+            if (! empty($redirect)) {
                 $payload['redirect_uri'] = $redirect;
             }
         }
@@ -112,12 +112,13 @@ class Factory
             ));
         }
         if (
-            !isset($token['access_token']) || !isset($token['refresh_token']) || !isset($token['expires_in'])
-            || !isset($token['user_id']) || !isset($token['scope'])
+            ! isset($token['access_token']) || ! isset($token['refresh_token']) || ! isset($token['expires_in'])
+            || ! isset($token['user_id']) || ! isset($token['scope'])
         ) {
             throw new InvalidArgumentException('MercadoLivre error: invalid response');
         }
         $token['expires_in'] = Carbon::now()->addSeconds($token['expires_in'])->subSeconds(120);
+
         return $token;
     }
 
@@ -128,10 +129,10 @@ class Factory
      */
     public function oauth(string $model, string $code): MercadoLivreToken|null
     {
-        if (!class_exists($model)) {
+        if (! class_exists($model)) {
             throw new InvalidArgumentException("Model $model does not exists");
         }
-        if (!is_subclass_of($model, MercadoLivreToken::class)) {
+        if (! is_subclass_of($model, MercadoLivreToken::class)) {
             throw new InvalidArgumentException("Model $model must be a subclass of ".MercadoLivreToken::class);
         }
 
@@ -153,9 +154,10 @@ class Factory
     public function peddingRequest(?string $token): PendingRequest
     {
         $pendingRequest = Http::baseUrl('https://api.mercadolibre.com');
-        if (!empty($token)) {
+        if (! empty($token)) {
             $pendingRequest = $pendingRequest->withToken($token);
         }
+
         return $pendingRequest;
     }
 
@@ -171,6 +173,7 @@ class Factory
             $token['refresh_token'],
             $token['expires_in'],
         );
+
         return $mercadoLivreToken;
     }
 }

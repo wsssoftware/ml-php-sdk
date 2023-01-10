@@ -11,7 +11,6 @@ use MercadoLivre\Utility\Resources\UserResource;
  */
 class MercadoLivre
 {
-
     public UserResource $userResource;
 
     /**

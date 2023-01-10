@@ -2,8 +2,6 @@
 
 namespace MercadoLivre\Utility\Resources;
 
-use MercadoLivre\Utility\MercadoLivre;
-
 /**
  * Class UserResource
  *
@@ -11,7 +9,6 @@ use MercadoLivre\Utility\MercadoLivre;
  */
 class UserResource extends Resource
 {
-
     /**
      * @return array
      */
@@ -28,5 +25,4 @@ class UserResource extends Resource
     {
         return $this->mercadoLivre->resourceGet('users/'.$id);
     }
-
 }
