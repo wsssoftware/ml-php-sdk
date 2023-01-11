@@ -18,6 +18,15 @@ class ItemResource extends Resource
         return $this->mercadoLivre->resourceGet('items/'.$id);
     }
 
+    /**
+     * @param  array  $ids
+     * @return array
+     */
+    public function byIds(array $ids): array
+    {
+        return $this->mercadoLivre->resourceGet('/items', ['ids' => $ids]);
+    }
+
     public function list(array $query = []): ItemIterable
     {
         return new ItemIterable($this->mercadoLivre, $query);
