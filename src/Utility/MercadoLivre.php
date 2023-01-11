@@ -2,6 +2,7 @@
 
 namespace MercadoLivre\Utility;
 
+use MercadoLivre\Utility\Resources\CategoryResource;
 use MercadoLivre\Utility\Resources\ItemResource;
 use MercadoLivre\Utility\Resources\UserResource;
 
@@ -12,6 +13,8 @@ use MercadoLivre\Utility\Resources\UserResource;
  */
 class MercadoLivre
 {
+    public CategoryResource $categoryResource;
+
     public ItemResource $itemResource;
 
     public UserResource $userResource;
@@ -24,6 +27,7 @@ class MercadoLivre
     public function __construct(
         public MercadoLivreToken $token
     ) {
+        $this->categoryResource = new CategoryResource($this);
         $this->itemResource = new ItemResource($this);
         $this->userResource = new UserResource($this);
     }

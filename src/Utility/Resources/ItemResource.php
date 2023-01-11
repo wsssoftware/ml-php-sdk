@@ -24,10 +24,24 @@ class ItemResource extends Resource
      */
     public function byIds(array $ids): array
     {
-        return $this->mercadoLivre->resourceGet('/items', ['ids' => $ids]);
+        return $this->mercadoLivre->resourceGet('/items', ['ids' => implode(',', $ids)]);
     }
 
-    public function list(array $query = []): ItemIterable
+    /**
+     * @param  array  $query
+     * @return array
+     */
+    public function items(array $query = []): array
+    {
+        $userId = $this->mercadoLivre->token->mlUserId();
+        return $this->mercadoLivre->resourceGet("users/$userId/items/search", $query);
+    }
+
+    /**
+     * @param  array  $query
+     * @return \MercadoLivre\Utility\Resources\ItemIterable
+     */
+    public function itemIterable(array $query = []): ItemIterable
     {
         return new ItemIterable($this->mercadoLivre, $query);
     }
