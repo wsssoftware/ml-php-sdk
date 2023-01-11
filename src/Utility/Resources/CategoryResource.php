@@ -15,6 +15,7 @@ class CategoryResource extends Resource
     public function categories(): array
     {
         $site = $this->mercadoLivre->token->mlSite();
+
         return $this->mercadoLivre->resourceGet("sites/$site/categories");
     }
 
