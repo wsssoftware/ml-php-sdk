@@ -2,7 +2,6 @@
 
 namespace MercadoLivre\Utility;
 
-use Illuminate\Support\Arr;
 use MercadoLivre\Utility\Resources\ItemResource;
 use MercadoLivre\Utility\Resources\UserResource;
 
@@ -75,6 +74,7 @@ class MercadoLivre
 
         if (mb_strtolower($response->json('message')) === mb_strtolower('Invalid scroll_id') && $this->attempts < 10) {
             sleep($this->attempts);
+
             return $this->resourceGet($resource, $query);
         } else {
             $this->attempts = 0;
@@ -87,6 +87,7 @@ class MercadoLivre
      * @param  string  $resource
      * @param  array  $data
      * @return array
+     *
      * @throws \Exception
      */
     public function resourceOption(string $resource, array $data = []): array
