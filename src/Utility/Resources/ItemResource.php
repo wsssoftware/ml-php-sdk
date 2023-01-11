@@ -46,4 +46,14 @@ class ItemResource extends Resource
     {
         return new ItemIterable($this->mercadoLivre, $query);
     }
+
+    /**
+     * @param  string  $id
+     * @param  array  $data
+     * @return array
+     */
+    public function update(string $id, array $data): array
+    {
+        return $this->mercadoLivre->resourcePut('items/'.$id, $data);
+    }
 }
