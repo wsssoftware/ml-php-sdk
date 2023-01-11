@@ -95,7 +95,7 @@ class Factory
             }
         }
 
-        $response = $this->peddingRequest(null)
+        $response = $this->pendingRequest(null)
             ->withHeaders([
                 'Content-Type' => 'application/x-www-form-urlencoded',
                 'Accept' => 'application/json',
@@ -137,7 +137,7 @@ class Factory
         }
 
         $token = $this->getToken(GrantType::AUTHORIZATION_CODE, $code);
-        $user = $this->peddingRequest($token['access_token'])->get('/users/me')->json();
+        $user = $this->pendingRequest($token['access_token'])->get('/users/me')->json();
 
         return $model::mlCreateToken(
             $user,
@@ -151,7 +151,7 @@ class Factory
      * @param  string|null  $token
      * @return \Illuminate\Http\Client\PendingRequest
      */
-    public function peddingRequest(?string $token): PendingRequest
+    public function pendingRequest(?string $token): PendingRequest
     {
         $pendingRequest = Http::baseUrl('https://api.mercadolibre.com');
         if (! empty($token)) {

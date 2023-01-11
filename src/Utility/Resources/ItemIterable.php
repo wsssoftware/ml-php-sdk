@@ -42,19 +42,17 @@ class ItemIterable implements \Iterator
     public function valid(): bool
     {
         $userId = $this->mercadoLivre->token->mlUserId();
-        $this->query += [
+        $query = $this->query;
+        $query += [
             'search_type' => 'scan',
-            'limit' => 100,
-            'status' => 'active',
         ];
         if (!empty($this->scroll)) {
-            $this->query['scroll_id'] = $this->scroll;
+            $query['scroll_id'] = $this->scroll;
         }
-        $response = $this->mercadoLivre->resourceGet("users/$userId/items/search", $this->query);
+        $response = $this->mercadoLivre->resourceGet("users/$userId/items/search", $query);
         $results = Arr::get($response, 'results', []);
         $this->scroll = Arr::get($response, 'scroll_id');
         $this->current = $results;
-        sleep(2);
         return count($results) > 0;
     }
 

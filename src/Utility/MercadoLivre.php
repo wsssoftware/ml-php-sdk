@@ -2,6 +2,7 @@
 
 namespace MercadoLivre\Utility;
 
+use Illuminate\Support\Arr;
 use MercadoLivre\Utility\Resources\ItemResource;
 use MercadoLivre\Utility\Resources\UserResource;
 
@@ -15,6 +16,8 @@ class MercadoLivre
     public ItemResource $itemResource;
 
     public UserResource $userResource;
+
+    protected int $attempts = 0;
 
     /**
      * @param  \MercadoLivre\Utility\MercadoLivreToken  $token
@@ -51,7 +54,8 @@ class MercadoLivre
      */
     public function resourceDelete(string $resource, array $data = []): array
     {
-        $response = \MercadoLivre\Facades\MercadoLivre::peddingRequest($this->token->mlToken())
+        $this->beforeResource();
+        $response = \MercadoLivre\Facades\MercadoLivre::pendingRequest($this->token->mlToken())
             ->delete($resource, $data);
 
         return $response->json();
@@ -64,8 +68,32 @@ class MercadoLivre
      */
     public function resourceGet(string $resource, array $query = []): array
     {
-        $response = \MercadoLivre\Facades\MercadoLivre::peddingRequest($this->token->mlToken())
+        $this->attempts++;
+        $this->beforeResource();
+        $response = \MercadoLivre\Facades\MercadoLivre::pendingRequest($this->token->mlToken())
             ->get($resource, $query);
+
+        if (mb_strtolower($response->json('message')) === mb_strtolower('Invalid scroll_id') && $this->attempts < 10) {
+            sleep($this->attempts);
+            return $this->resourceGet($resource, $query);
+        } else {
+            $this->attempts = 0;
+        }
+
+        return $response->json();
+    }
+
+    /**
+     * @param  string  $resource
+     * @param  array  $data
+     * @return array
+     * @throws \Exception
+     */
+    public function resourceOption(string $resource, array $data = []): array
+    {
+        $this->beforeResource();
+        $response = \MercadoLivre\Facades\MercadoLivre::pendingRequest($this->token->mlToken())
+            ->send('OPTIONS', $resource);
 
         return $response->json();
     }
@@ -77,7 +105,8 @@ class MercadoLivre
      */
     public function resourcePost(string $resource, array $data = []): array
     {
-        $response = \MercadoLivre\Facades\MercadoLivre::peddingRequest($this->token->mlToken())
+        $this->beforeResource();
+        $response = \MercadoLivre\Facades\MercadoLivre::pendingRequest($this->token->mlToken())
             ->post($resource, $data);
 
         return $response->json();
@@ -90,7 +119,8 @@ class MercadoLivre
      */
     public function resourcePut(string $resource, array $data = []): array
     {
-        $response = \MercadoLivre\Facades\MercadoLivre::peddingRequest($this->token->mlToken())
+        $this->beforeResource();
+        $response = \MercadoLivre\Facades\MercadoLivre::pendingRequest($this->token->mlToken())
             ->put($resource, $data);
 
         return $response->json();
