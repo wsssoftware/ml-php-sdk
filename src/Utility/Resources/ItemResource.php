@@ -34,6 +34,7 @@ class ItemResource extends Resource
     public function items(array $query = []): array
     {
         $userId = $this->mercadoLivre->token->mlUserId();
+
         return $this->mercadoLivre->resourceGet("users/$userId/items/search", $query);
     }
 
